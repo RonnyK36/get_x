@@ -40,11 +40,52 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-                onPressed: () {
-                  Get.snackbar(
-                      'Successful Singin', 'Dear user welcome to my app');
-                },
-                child: Text('Show Snackbar'))
+              onPressed: () {
+                Get.snackbar(
+                  'Successful Singin',
+                  'Dear user welcome to my app',
+                  snackPosition: SnackPosition.BOTTOM,
+                );
+              },
+              child: Text('Show Snackbar'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.defaultDialog(
+                    title: 'Welcome',
+                    middleText: 'You just created an account');
+              },
+              child: Text('Show dialog'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.bottomSheet(Container(
+                  child: Wrap(
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          Icons.wb_sunny_outlined,
+                        ),
+                        title: Text('Light theme'),
+                        onTap: () {
+                          Get.changeTheme(ThemeData.light());
+                        },
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.wb_sunny,
+                        ),
+                        title: Text('Dark theme'),
+                        onTap: () {
+                          Get.changeTheme(ThemeData.dark());
+                        },
+                      ),
+                    ],
+                  ),
+                ));
+              },
+              child: Text('Change theme'),
+            ),
           ],
         ),
       ),
