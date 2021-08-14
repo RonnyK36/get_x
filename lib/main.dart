@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_x/views/home/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,32 +60,52 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Get.bottomSheet(Container(
-                  child: Wrap(
-                    children: [
-                      ListTile(
-                        leading: Icon(
-                          Icons.wb_sunny_outlined,
+                Get.bottomSheet(
+                  Container(
+                    child: Wrap(
+                      children: [
+                        ListTile(
+                          leading: Icon(
+                            Icons.wb_sunny_outlined,
+                          ),
+                          title: Text('Light theme'),
+                          onTap: () {
+                            Get.changeTheme(ThemeData.light());
+                          },
                         ),
-                        title: Text('Light theme'),
-                        onTap: () {
-                          Get.changeTheme(ThemeData.light());
-                        },
-                      ),
-                      ListTile(
-                        leading: Icon(
-                          Icons.wb_sunny,
+                        ListTile(
+                          leading: Icon(
+                            Icons.wb_sunny,
+                          ),
+                          title: Text('Dark theme'),
+                          onTap: () {
+                            Get.changeTheme(ThemeData.dark());
+                          },
                         ),
-                        title: Text('Dark theme'),
-                        onTap: () {
-                          Get.changeTheme(ThemeData.dark());
-                        },
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ));
+                  backgroundColor: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                    side: BorderSide(
+                      color: Colors.white,
+                      width: 2,
+                      style: BorderStyle.solid,
+                    ),
+                  ),
+                );
               },
               child: Text('Change theme'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Get.to(
+                  Home(),
+                  fullscreenDialog: true,
+                );
+              },
+              child: Text('Proceed now'),
             ),
           ],
         ),
