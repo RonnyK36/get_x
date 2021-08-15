@@ -12,11 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primarySwatch: Colors.blue,
+        primaryColor: Colors.green[700],
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'GetX Package'),
     );
   }
 }
@@ -34,18 +36,26 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // debugModeShowBanner: false,
       appBar: AppBar(
         title: Text(widget.title),
+        centerTitle: true,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             GetX<MyController>(
                 init: MyController(),
                 builder: (controller) {
                   return Text(
-                      'Count value : ${controller.count} (Min = 0, max = 5)');
+                    'Count value : ${controller.count}.\n(Min = 0, max = 5)',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.amber,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  );
                 }),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
