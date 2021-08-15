@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_x/controllers/my_controller.dart';
 import 'package:get_x/views/home/home.dart';
 
 void main() {
@@ -40,6 +41,32 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            GetX<MyController>(
+                init: MyController(),
+                builder: (controller) {
+                  return Text(
+                      'Count value : ${controller.count} (Min = 0, max = 5)');
+                }),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Get.find<MyController>().decreament();
+                  },
+                  child: Text('Subract'),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.find<MyController>().increament();
+                  },
+                  child: Text('Add'),
+                ),
+              ],
+            ),
             ElevatedButton(
               onPressed: () {
                 Get.snackbar(
